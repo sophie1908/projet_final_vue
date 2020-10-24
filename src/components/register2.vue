@@ -10,14 +10,18 @@
                 <h1>Vos paramètres</h1>
                     <!-- data-male: attribut une valeur a l'icone seléctionner -->
                         <div class="bonhomme">
-                            <i class="fas fa-male" data-male="1"></i>
-                            <i class="fas fa-male" data-male="2"></i>
-                            <i class="fas fa-male" data-male="3"></i>
-                            <i class="fas fa-male" data-male="4"></i>
-                            <i class="fas fa-male" data-male="5"></i>
-                            <i class="fas fa-male" data-male="6"></i>
-                            <i class="fas fa-male" data-male="7"></i>
-                            <i class="fas fa-male" data-male="8"></i>
+                            <i
+                                v-for="n in 8"
+                                :class="[
+                                'fas fa-male',
+                                {
+                                    'bonhomme--selected': n <= personne
+                                }
+                                ]"
+                                :data-male="n"
+                                :key="n"
+                                @click="onSelectMaleNumber(n)"
+                            />
                         </div>
         
 
@@ -112,7 +116,7 @@ export default {
             selected_dej: "",
             selected_diner: "",
             email : this.$route.params.email,
-              
+            personne: 0
         }
 },
 
@@ -137,6 +141,9 @@ components:{},
             })
 
         },
+        onSelectMaleNumber(num) {
+            this.personne = num
+        }
     },
     
 }
@@ -183,23 +190,9 @@ components:{},
     flex-direction: column;
     align-items: center;
 }
-.bonhomme > i:hover:before {
-   color: red;
-   position: absolute;
-}
-.bonhomme {
-  unicode-bidi: bidi-override;
-  direction: rtl;
-}
+
 .bonhomme > i {
-  display: inline-block;
-  position: relative;
   width: 20px;
-}
-.bonhomme > i:hover:before,
-.bonhomme > i:hover ~ i:before {
-   color: red;
-   position: absolute;
 }
 
 .bonhomme{
@@ -210,12 +203,16 @@ components:{},
    color: #BFBABA;
 }
 
+.bonhomme--selected {
+    color: red
+}
+
 .fa-male{
     font-size: 50px;
 }
 
 .repas{
-     display: flex;
+    display: flex;
     width: 580px;
     justify-content: space-around;
     
