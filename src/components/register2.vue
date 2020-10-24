@@ -15,7 +15,7 @@
                                 :class="[
                                 'fas fa-male',
                                 {
-                                    'bonhomme--selected': n <= selectedMaleNumber
+                                    'bonhomme--selected': n <= personne
                                 }
                                 ]"
                                 :data-male="n"
@@ -116,7 +116,7 @@ export default {
             selected_dej: "",
             selected_diner: "",
             email : this.$route.params.email,
-            selectedMaleNumber: 0
+            personne: 0
         }
 },
 
@@ -142,7 +142,7 @@ components:{},
 
         },
         onSelectMaleNumber(num) {
-            this.selectedMaleNumber = num
+            this.personne = num
         }
     },
     
