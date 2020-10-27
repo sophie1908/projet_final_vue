@@ -55,7 +55,7 @@ export default {
                 alert("ok");
                 if(res.data.token){
                     localStorage.setItem("token",res.data.token)
-                    this.$router.push({name: 'register2'})
+                    this.$router.push({name: 'accueil'})
                     window.location.reload();
                 }
                 else{
@@ -126,6 +126,7 @@ input{
     height: 33px;
     display: flex;
     border-radius: 5px;
+    box-shadow: 1px 1px 5px #585757;
 }
 
 .input_login{
@@ -133,6 +134,8 @@ input{
     flex-direction: column;
     height: 80%;
     justify-content: space-between;
+    width: 100%;
+    align-items: center;
 }
 
 

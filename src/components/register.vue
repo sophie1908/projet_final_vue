@@ -7,11 +7,11 @@
         </div>
         <div class="register">
             
-            <input type="text" name="nom" id="nom_register" placeholder="Nom..." v-model="nom_register" >
+            <input type="text" name="nom" id="nom_register" placeholder="Nom..." v-model="nom_register" required >
           
 
             
-            <input type="text" name="prenom" id="prenom_register" placeholder="Prénom..." v-model="prenom_register" >
+            <input type="text" name="prenom" id="prenom_register" placeholder="Prénom..." v-model="prenom_register" required >
             
 
             
@@ -31,7 +31,7 @@
            
 
            
-            <input type="email" name="email" id="email_register" autocomplete="off" placeholder="Email..." v-model="email_register" >
+            <input type="email" name="email" id="email_register" autocomplete="off" placeholder="Email..." v-model="email_register" required >
             
 
             
@@ -39,11 +39,11 @@
            
 
             
-            <input type="password" name="password" id="password_register" autocomplete="off" placeholder="Password..." v-model="password_register" >
+            <input type="password" name="password" id="password_register" autocomplete="off" placeholder="Password..." v-model="password_register" required >
             
 
             
-            <input type="password" name="confirm" id="confirm_register" placeholder="Confirmation password" v-model="confirm_register" >
+            <input type="password" name="confirm" id="confirm_register" placeholder="Confirmation password" v-model="confirm_register" required >
            
 
         </div>
@@ -95,13 +95,15 @@ components:{},
             .then(res =>{
 
                 console.log(res);
-                alert("ok");
+            
                 if(res.data.token){
+                        alert("ok");
                     localStorage.setItem("token",res.data.token)
                     this.$router.push({name: 'register2', params: {email : this.email_register}})
                     window.location.reload();
                 }
                 else{
+                    alert(res.data.msg)
                     this.$router.push({name: "register", params: {msg: "pas enregistré"} })
                 }
             })

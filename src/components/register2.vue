@@ -1,5 +1,5 @@
 <template>
-    <div :style="{'background-image': 'url(' + require('../assets/ingredient_fond.jpg') + ')'} " class="background_register1" >
+    <div :style="{'background-image': 'url(' + require('../assets/ingredient_fond.jpg') + ')'}  " opacity="50" class="background_register1" >
         <div class="container">
             
             <div class="head">
@@ -10,14 +10,18 @@
                 <h1>Vos paramètres</h1>
                     <!-- data-male: attribut une valeur a l'icone seléctionner -->
                         <div class="bonhomme">
-                            <i class="fas fa-male" data-male="1"></i>
-                            <i class="fas fa-male" data-male="2"></i>
-                            <i class="fas fa-male" data-male="3"></i>
-                            <i class="fas fa-male" data-male="4"></i>
-                            <i class="fas fa-male" data-male="5"></i>
-                            <i class="fas fa-male" data-male="6"></i>
-                            <i class="fas fa-male" data-male="7"></i>
-                            <i class="fas fa-male" data-male="8"></i>
+                            <i
+                                v-for="n in 8"
+                                :class="[
+                                'fas fa-male',
+                                {
+                                    'bonhomme--selected': n <= personne
+                                }
+                                ]"
+                                :data-male="n"
+                                :key="n"
+                                @click="onSelectMaleNumber(n)"
+                            />
                         </div>
         
 
@@ -84,11 +88,11 @@
                     {{ selected_petitdej }} petit déjeuner <br>
                     {{ selected_dej }} déjeuner <br>
                     {{ selected_diner }} dîner <br>
-                    pour 5 personnes</span>
+                    pour {{ personne }} personnes</span>
             </div>
             
-                <!-- <a href="/myregister2"> --><button @click="inscription_param" class="btn-suivant"
-                value="Suivant">Suivant</button><!-- </a> -->
+                <button @click="inscription_param" class="btn-suivant"
+                value="Suivant">Suivant</button>
 
 
 
@@ -112,12 +116,10 @@ export default {
             selected_dej: "",
             selected_diner: "",
             email : this.$route.params.email,
-              
+            personne: 0
         }
 },
-
 components:{},
-
     methods:{
        
             inscription_param: function (){
@@ -129,14 +131,28 @@ components:{},
                     diner: this.selected_diner
             })
             .then(res =>{
+
                 console.log(res);
-                alert("ok");
+            
+                if(res.data){
+                        alert("ok");
+                        localStorage.setItem("token",res.data.token)
+                    this.$router.push({name: 'register3', params: {email : this.email}})
+                   /*  La méthode Location.reload() recharge la ressource depuis l'URL actuelle */
+                    window.location.reload();
+                }
+                else{
+                    alert(res.data.msg)
+                    this.$router.push({name: "register2", params: {msg: "pas enregistré"} })
+                }
             })
             .catch(err => {
                 console.log(err);
             })
-
         },
+        onSelectMaleNumber(num) {
+            this.personne = num
+        }
     },
     
 }
@@ -157,6 +173,7 @@ components:{},
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 
@@ -183,23 +200,8 @@ components:{},
     flex-direction: column;
     align-items: center;
 }
-.bonhomme > i:hover:before {
-   color: red;
-   position: absolute;
-}
-.bonhomme {
-  unicode-bidi: bidi-override;
-  direction: rtl;
-}
-.bonhomme > i {
-  display: inline-block;
-  position: relative;
+.bonhomme >i {
   width: 20px;
-}
-.bonhomme > i:hover:before,
-.bonhomme > i:hover ~ i:before {
-   color: red;
-   position: absolute;
 }
 
 .bonhomme{
@@ -208,6 +210,9 @@ components:{},
     margin: 30px;
    justify-content: space-around;
    color: #BFBABA;
+}
+.bonhomme--selected {
+    color: red
 }
 
 .fa-male{

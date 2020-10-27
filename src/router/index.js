@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Accueil from "../views/Accueil.vue";
+import AccueilUser from "../views/AccueilUser.vue";
 import Register from "../views/Register.vue";
 import Register2 from "../views/Register2.vue";
 import Register3 from "../views/Register3.vue";
@@ -8,6 +9,7 @@ import Login from "../views/Login.vue";
 import Mdp from "../views/Mdp.vue";
 import Reinitialiser from "../views/Reinitialiser.vue";
 import MesRecette from "../views/MesRecette.vue";
+import AdminRecette from "../views/AdminRecette.vue";
 
 Vue.use(VueRouter)
 
@@ -15,6 +17,12 @@ const routes = [{
         path: '/',
         name: 'Accueil',
         component: Accueil
+    },
+
+    {
+        path: '/myaccueilUser',
+        name: 'accueilUser',
+        component: AccueilUser
     },
 
     {
@@ -48,7 +56,7 @@ const routes = [{
     },
 
     {
-        path: '/myreinitialiser',
+        path: '/myreinitialiser/:token',
         name: 'reinitialiser',
         component: Reinitialiser
     },
@@ -56,6 +64,12 @@ const routes = [{
         path: '/MesRecette',
         name: 'mesRecette',
         component: MesRecette
+    },
+
+    {
+        path: '/myadminRecette',
+        name: 'adminRecette',
+        component: AdminRecette
     },
 
 ]
