@@ -200,12 +200,8 @@ components:{},
     flex-direction: column;
     align-items: center;
 }
-<<<<<<< HEAD
-.bonhomme >i {
-=======
 
 .bonhomme > i {
->>>>>>> refs/remotes/origin/main
   width: 20px;
 }
 
