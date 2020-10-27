@@ -200,7 +200,12 @@ components:{},
     flex-direction: column;
     align-items: center;
 }
+<<<<<<< HEAD
 .bonhomme >i {
+=======
+
+.bonhomme > i {
+>>>>>>> refs/remotes/origin/main
   width: 20px;
 }
 
@@ -215,12 +220,16 @@ components:{},
     color: red
 }
 
+.bonhomme--selected {
+    color: red
+}
+
 .fa-male{
     font-size: 50px;
 }
 
 .repas{
-     display: flex;
+    display: flex;
     width: 580px;
     justify-content: space-around;
     
