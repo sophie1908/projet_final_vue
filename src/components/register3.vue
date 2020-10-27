@@ -21,44 +21,59 @@
                             />
             </div>
             <div class="pref">
-                <div class="pref_item" id="vegetarien" @click="push">
-                    <img src="../assets/vege.png" alt="vegetarien">
-                </div>
+            
+            <ul>
+  <li>
+    <input type="checkbox" id="myCheckbox1" value="vegetarien" v-model="pref1" >
+    <label for="myCheckbox1"><img src="../assets/vege.png" /></label>
+  </li>
+  <li>
 
-                <div class="pref_item" id="sans_porc">
-                    <img src="../assets/sp.png" alt="sans porc">
-                </div>
+    <input type="checkbox" id="myCheckbox2"  value="sans_porc" v-model="pref2" >
+    <label for="myCheckbox2"><img src="../assets/sp.png" /></label>
+  </li>
+  <li>
 
-                <div class="pref_item" id="sans_gluten">
-                    <img src="../assets/gluten.png" alt="sans gluten">
-                </div>
+    <input type="checkbox" id="myCheckbox3" value="sans_gluten" v-model="pref3" />
+    <label for="myCheckbox3"><img src="../assets/gluten.png" /></label>
+  </li>
+  <li>
 
-                <div class="pref_item" id="sans_laitier">
-                    <img src="../assets/laitier.png" alt="sans laitier">
-                </div>
+    <input type="checkbox" id="myCheckbox4" value="sans_lactose" v-model="pref4" />
+    <label for="myCheckbox4"><img src="../assets/laitier.png" /></label>
+  </li>
+</ul>
             </div>
 
+<span>Chaque semaine nous vous proposerons <br>
+                    {{ pref1 }}{{ pref2 }}{{ pref3 }}{{ pref4 }} petit déjeuner <br></span>
             <div class="materiel">
-                <div class="materiel_item" id="four">
-                    <img src="../assets/four.png" alt="four">
-                </div>
+                <ul>
+  <li>
+    <input type="checkbox" id="myCheckbox11" />
+    <label for="myCheckbox11"><img src="../assets/four.png" /></label>
+  </li>
+  <li>
 
-                <div class="materiel_item" id="friteuse">
-                    <img src="../assets/friteuse.png" alt="friteuse">
-                </div>
+    <input type="checkbox" id="myCheckbox22" />
+    <label for="myCheckbox22"><img src="../assets/friteuse.png" /></label>
+  </li>
+  <li>
 
-                <div class="materiel_item" id="mixeur">
-                    <img src="../assets/mixeur.png" alt="mixeur">
-                </div>
+    <input type="checkbox" id="myCheckbox33" />
+    <label for="myCheckbox33"><img src="../assets/mixeur.png" /></label>
+  </li>
+  <li>
 
-                <div class="materiel_item" id="micro_onde">
-                    <img src="../assets/micro_onde.png" alt="micro_onde">
-                </div>
+    <input type="checkbox" id="myCheckbox44" />
+    <label for="myCheckbox44"><img src="../assets/micro_onde.png" /></label>
+  </li>
+</ul>
             </div>
 
 
             </div>
-            <button @click="inscription" class="btn-suivant"
+            <button @click="register_final" class="btn-suivant"
             value="Suivant">Suivant</button>
             
             <div class="progression">       
@@ -72,11 +87,14 @@
 </template>
 <script>
 export default {
-    name: "register",
+    name: "register_final",
     data() {
         return {
             email : this.$route.params.email,
-            star: 0
+            pref1:"",
+            pref2:"",
+            pref3:"",
+            pref4:"",
             }
 },
 components:{},
@@ -154,29 +172,6 @@ components:{},
     background-color: white;
 }
 
-.pref_item{
-    width: 120px;
-    height: 120px;
-    margin: 10px;
-    box-shadow: 0px 0px 8px 3px #cccccc;
-    border-radius: 11px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-}
-
-.materiel_item{
-    width: 120px;
-    height: 120px;
-    margin: 10px;
-    box-shadow: 0px 0px 8px 3px #cccccc;
-    border-radius: 11px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-}
 
 
 .i{
@@ -292,6 +287,67 @@ h1{
 }
 .star--selected {
     color: red
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: inline-block;
+}
+
+input[type="checkbox"][id^="myCheckbox"] {
+  display: none;
+}
+
+label {
+  border: 1px solid #fff;
+  padding: 10px;
+  display: block;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
+
+label:before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+
+label img {
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+}
+
+:checked + label {
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 1px #BBB9B9;
+  
+}
+
+:checked + label:before {
+  content: "✓";
+  background-color: #ff9d9e;
+  transform: scale(1);
+}
+
+:checked + label img {
+  transform: scale(0.9);
+  /* box-shadow: 0 0 5px #333; */
+  z-index: -1;
 }
 
 

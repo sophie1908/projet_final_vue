@@ -137,9 +137,9 @@ components:{},
                 if(res.data){
                         alert("ok");
                         localStorage.setItem("token",res.data.token)
-                    this.$router.push({name: 'register3', params: {email : this.email}})
-                   /*  La méthode Location.reload() recharge la ressource depuis l'URL actuelle */
-                    window.location.reload();
+                        this.$router.push({name: 'register3', params: {email : this.email}})
+                        /*  La méthode Location.reload() recharge la ressource depuis l'URL actuelle */
+                        window.location.reload();
                 }
                 else{
                     alert(res.data.msg)
