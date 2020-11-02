@@ -14,7 +14,10 @@
         <h1>Paramètre Foyer</h1>
       </div>
       <div class="register">
+        
         <div class="niveau_cuisine">
+          <h2>Votre niveau de cuisine</h2>
+          <div class="stars_kitchen">
           <i
             v-for="n in 5"
             :class="[
@@ -27,7 +30,9 @@
             :key="n"
             @click="onSelectStarNumber(n)"
           />
+          </div>
         </div>
+        <div class="container_parametre">
         <div class="pref">
           <ul>
             <li v-for="item in prefs" :key="item.id">
@@ -37,48 +42,45 @@
                 :value="item.id"
                 v-model="prefAlimentaire"
               />
-              <label :for="'myCheckbox' + item.id"
+              <label class="label_container" :for="'myCheckbox' + item.id"
                 ><img :src="require(`@/assets/${item.image}.png`)"
-              /></label>
+              />
+              {{item.nom}}
+              </label>
             </li>
           </ul>
         </div>
 
-        <span
+        <!-- <span
           >Chaque semaine nous vous proposerons <br />
           {{ prefAlimentaire }} petit déjeuner <br
-        /></span>
+        /></span> -->
 
         <div class="materiel">
           <ul>
-            <li>
-              <input type="checkbox" id="myCheckbox11" />
-              <label for="myCheckbox11"><img src="../assets/four.png"/></label>
-            </li>
-            <li>
-              <input type="checkbox" id="myCheckbox22" />
-              <label for="myCheckbox22"
-                ><img src="../assets/friteuse.png"
-              /></label>
-            </li>
-            <li>
-              <input type="checkbox" id="myCheckbox33" />
-              <label for="myCheckbox33"
-                ><img src="../assets/mixeur.png"
-              /></label>
-            </li>
-            <li>
-              <input type="checkbox" id="myCheckbox44" />
-              <label for="myCheckbox44"
-                ><img src="../assets/micro_onde.png"
-              /></label>
+            <li v-for="item in materiels" :key="item.id">
+              <input
+                type="checkbox"
+                :id="'myCheckbox1' + item.id"
+                :value="item.id"
+                v-model="Materiels"
+              />
+              <label class="label_container" :for="'myCheckbox1' + item.id"
+                ><img :src="require(`@/assets/${item.image}.png`)"
+              />
+              {{item.nom}}</label>
             </li>
           </ul>
         </div>
+        </div>
       </div>
-      <button class="btn-suivant" @click="registerFinal" value="Suivant">
-        Suivant
-      </button>
+      <div class="btnsuiv">
+                <button @click="registerFinal">
+                    <svg width="40px" height="40px" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                </button>
+            </div>
 
       <div class="progression">
         <div class="progress1"></div>
@@ -91,10 +93,11 @@
 <script>
 export default {
   name: "register_final",
-  props: ["prefs"],
+  props: ["prefs", "materiels"],
   data() {
     return {
       prefAlimentaire: [],
+      Materiels: [],
       email: this.$route.params.email,
       star: "",
     };
@@ -109,6 +112,7 @@ export default {
         .post("http://localhost:3000/user/registerfinal", {
           email: this.email,
           pref: this.prefAlimentaire,
+          materiel: this.Materiel,
         })
         .then((res) => {
           console.log(res.data);
@@ -152,39 +156,51 @@ export default {
 
 .niveau_cuisine {
   width: 142px;
-  height: 45px;
+  height: 80px;
   box-shadow: 0px 0px 7px 5px #cccccc, 5px 5px 10px #ffffff;
   border-radius: 11px;
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
   background-color: white;
+}
+.container_parametre{
+  display: flex;
+
 }
 
 .pref {
-  width: 600px;
-  height: 160px;
-  box-shadow: 0px 0px 7px 5px #cccccc, 5px 5px 10px #ffffff;
-  border-radius: 11px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
+  width: 320px;
+    height: 320px;
+    box-shadow: 0px 0px 3px 2px #cccccc, 5px 5px 10px #ffffff;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    margin: 0px 30px 0px 30px;
+    background-color: white;
+    padding: 25px;
 }
+
+
 .materiel {
-  width: 600px;
-  height: 160px;
-  box-shadow: 0px 0px 7px 5px #cccccc, 5px 5px 10px #ffffff;
-  border-radius: 11px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
+  width: 320px;
+    height: 320px;
+    box-shadow: 0px 0px 3px 2px #cccccc, 5px 5px 10px #ffffff;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    margin: 0px 30px 0px 30px;
+    background-color: white;
+    padding: 25px;
 }
+
 
 .i {
   margin: 10px;
   height: 15px;
+}
+.stars_kitchen{
+  text-align: center;
 }
 
 .register .user {
@@ -215,24 +231,38 @@ h1 {
   font-size: 40px;
   text-align: center;
 }
-
-.btn-suivant {
-  border: 0;
-  height: 43px;
-  width: 135px;
-  font-size: 22px;
+h2{
   text-align: center;
-  color: #fff;
-  text-shadow: 1px 1px 1px #000;
-  border-radius: 22px;
-  background-color: #ff9d9e;
-  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  font-size: 20px;
 }
+
 
 .btn-suivant:active {
   box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+.btnsuiv button {
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    background-color: #ff9d9e;
+    border: 5px solid white;
+    transform: translate(552px, 35px) !important;
+    transition: 0.5s;
+    outline: none;
+    cursor: pointer;
+}
+
+.bi-chevron-right {
+    color: white;
+    transition: all 1s;
+}
+
+.bi-chevron-right:hover {
+    color: white;
+    width: 60px;
+    height: 60px;
+    transition: all 1s;
 }
 .head {
   display: flex;
@@ -251,30 +281,30 @@ h1 {
 }
 
 .progress1 {
-  width: 75px;
-  height: 12px;
-  border-radius: 20px;
-  border: 1px solid #b8b3b3;
-  margin: 2px;
-  background-color: #ff9d9e;
+  width: 15px;
+    height: 15px;
+    border-radius: 68px;
+    border: 2px solid white;
+    margin: 2px;
+    background-color: #ff9d9e
 }
 
 .progress2 {
-  width: 75px;
-  height: 12px;
-  border-radius: 20px;
-  border: 1px solid#b8b3b3;
-  margin: 2px;
-  background-color: #ff9d9e;
+  width: 15px;
+    height: 15px;
+    border-radius: 68px;
+    border: 2px solid white;
+    margin: 2px;
+    background-color: #ff9d9e
 }
 
 .progress3 {
-  width: 75px;
-  height: 12px;
-  border-radius: 20px;
-  border: 1px solid#b8b3b3;
-  margin: 2px;
-  background-color: #ff9d9e;
+  width: 15px;
+    height: 15px;
+    border-radius: 68px;
+    border: 2px solid white;
+    margin: 2px;
+    background-color: #ff9d9e
 }
 
 .star > i {
@@ -289,7 +319,7 @@ h1 {
   color: #bfbaba;
 }
 .star--selected {
-  color: red;
+  color: #ff9d9e;
 }
 
 ul {
@@ -298,19 +328,22 @@ ul {
 
 li {
   display: inline-block;
+  width: 130px;
 }
 
 input[type="checkbox"][id^="myCheckbox"] {
   display: none;
 }
 
+
 label {
   border: 1px solid #fff;
-  padding: 10px;
-  display: block;
-  position: relative;
-  margin: 10px;
-  cursor: pointer;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+    text-align: center;
 }
 
 label:before {
