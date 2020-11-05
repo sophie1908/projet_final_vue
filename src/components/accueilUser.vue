@@ -4,6 +4,10 @@
     <div class="header">
    
 <img src="../assets/fond_head1.jpg" alt="fond">
+
+<span v-for="item in users" :key="item.email">
+    Bonjour {{item.nom}}{{item.prenom}}</span>
+    
     </div>
     
 
@@ -42,7 +46,13 @@
 
 <script>
 export default {
-    
+   props: ["users"],
+  data() {
+     
+    return {
+      email: this.$route.params.email,
+    }
+  }
 }
 </script>
 

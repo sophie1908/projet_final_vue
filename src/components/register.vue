@@ -48,14 +48,15 @@
 
         </div>
             
-            <button @click="inscription" class="btn-suivant"
-            value="Suivant">Suivant</button>
+            <div class="btnsuiv">
+                    <button @click="inscription">
+                        <svg width="40px" height="40px" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                      </svg>
+                    </button>
+          </div>
+            
 
-            <div class="progression">
-            <div class="progress1"></div>
-            <div class="progress2"></div>
-            <div class="progress3"></div>
-            </div>
     </div>
 
     </div>
@@ -99,7 +100,7 @@ components:{},
                 if(res.data.token){
                         alert("ok");
                     localStorage.setItem("token",res.data.token)
-                    this.$router.push({name: 'register2', params: {email : this.email_register}})
+                    this.$router.push({name: 'register3', params: {email : this.email_register}})
                     window.location.reload();
                 }
                 else{
@@ -124,16 +125,16 @@ components:{},
 
 .background_register1{
     height: 1000px;
-    background-repeat: no-repeat ;
+    background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 90%;
+    padding: 30px;
 }
+
 
 .container{
     background-color: #f1f1f1;
+    height: 560px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -175,38 +176,30 @@ h1{
    margin-top:10px ;
 }
 
-.btn-suivant {
-    border: 0;
-    height: 43px;
-    width: 135px;
-    font-size: 22px;
-    text-align: center;
-    color: #fff;
-    border-radius: 22px;
+
+.btnsuiv button {
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
     background-color: #ff9d9e;
-    position: relative;
-    margin: 20px;
-    transition: all 0.5s;
-    box-shadow:  5px 5px 6px #663f3f, 
-             -5px -5px 6px #fffbfd;
-    outline:none;
-
-    
+    border: 5px solid white;
+    transform: translate(550px, 90px) !important;
+    transition: 0.5s;
+    outline: none;
+    cursor: pointer;
 }
 
-.btn-suivant:hover{
-    transform: scale(1.1);
-    transition: all 0.5s;
-
-
+.bi-chevron-right {
+    color: white;
+    transition: all 1s;
 }
 
-
-.btn-suivant:hover {
-    background-color: inset 2px 2px 3px rgba(255, 255, 255, .6);
+.bi-chevron-right:hover {
+    color: white;
+    width: 60px;
+    height: 60px;
+    transition: all 1s;
 }
-
-
 .head{
     display: flex;
     justify-content: space-around;
@@ -218,37 +211,5 @@ font-size: 35px;
     top: 20px;
     color: #a9a6a3;
 }
-
-.progression{
-    display: flex;
-    }
-
-.progress1{
-    width: 75px;
-    height: 12px;
-    border-radius: 20px;
-    border: 1px solid #b8b3b3;
-    margin: 2px;
-    background-color:#ff9d9e
-}
-
-.progress2{
-    width: 75px;
-    height: 12px;
-    border-radius: 20px;
-    border: 1px solid#b8b3b3;
-    margin: 2px;
-}
-
-.progress3{
-    width: 75px;
-    height: 12px;
-    border-radius: 20px;
-    border: 1px solid black;
-    margin: 2px;
-}
-
-
-
 
 </style>

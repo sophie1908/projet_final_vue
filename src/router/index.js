@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Accueil from "../views/Accueil.vue";
 import AccueilUser from "../views/AccueilUser.vue";
 import Register from "../views/Register.vue";
-import Register2 from "../views/Register2.vue";
 import Register3 from "../views/Register3.vue";
 import Login from "../views/Login.vue";
 import Mdp from "../views/Mdp.vue";
@@ -20,7 +19,7 @@ const routes = [{
     },
 
     {
-        path: '/myaccueilUser',
+        path: '/myaccueilUser/:email',
         name: 'accueilUser',
         component: AccueilUser
     },
@@ -31,11 +30,6 @@ const routes = [{
         component: Register
     },
 
-    {
-        path: '/myregister2/:email',
-        name: 'register2',
-        component: Register2
-    },
 
     {
         path: '/myregister3/:email',

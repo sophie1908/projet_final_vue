@@ -27,9 +27,10 @@
 
    
     <div class="section">
-        <p class="p_first">En quelques clics! <br>
-            Une liste de recette et de course créé<br> 
-            spécialement pour vous gratuitement.</p>
+        <p class="p_first">Imagine<br>
+            En 1 clic, <br>
+            Une liste de recette et de course <br> 
+            pour la semaine</p>
 
         <div class="bulle">
             <img src="../assets/bulle_orange.png" alt="fond" class="img_1">
