@@ -7,7 +7,6 @@ import Register3 from "../views/Register3.vue";
 import Login from "../views/Login.vue";
 import Mdp from "../views/Mdp.vue";
 import Reinitialiser from "../views/Reinitialiser.vue";
-import MesRecette from "../views/MesRecette.vue";
 import AdminRecette from "../views/AdminRecette.vue";
 
 Vue.use(VueRouter)
@@ -53,11 +52,6 @@ const routes = [{
         path: '/myreinitialiser/:token',
         name: 'reinitialiser',
         component: Reinitialiser
-    },
-    {
-        path: '/MesRecette',
-        name: 'mesRecette',
-        component: MesRecette
     },
 
     {

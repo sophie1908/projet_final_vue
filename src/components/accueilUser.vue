@@ -3,29 +3,58 @@
     
     <div class="header">
    
-<img src="../assets/fond_head1.jpg" alt="fond">
+        <img src="../assets/fond_head1.jpg" alt="fond">
 
-<span v-for="item in users" :key="item.email">
-    Bonjour {{item.nom}}{{item.prenom}}</span>
-    
+        <p class="user_identite">Bonjour <br>  {{user.prenom}}</p>
+
     </div>
-    
 
-    <div class="icone">
-        <div class="barreDeRecherche">
-            <b-input-group size="sm" class="mb-2">
-            <b-input-group-prepend is-text>
-            <b-icon icon="search"></b-icon>
-            </b-input-group-prepend>
-            <b-form-input type="search" placeholder="Recette ou ingrédient"></b-form-input>
-            </b-input-group>
+   
+
+
+        <b-nav-item-dropdown right>
+          <template #button-content >
+            <em style=" color: white;
+                        font-size: 30px;
+                        font-style: normal;
+                        border: 3px white solid;
+                        border-radius: 10px;
+                        padding: 10px;
+                        ">
+            {{user.prenom}}
+            </em>
+          </template>
+          <b-dropdown-item href="#">Profile</b-dropdown-item>
+          <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+        </b-nav-item-dropdown>
+     
+<div class="section1">
+    <p class="hello">
+        Vos recettes de cette semaine</p>
+        <div class="recette">
+            <div v-for="recette in recette" :key="recette.id">
+                
+                <div class="single-publication">
+                    
+                <div class="recette image">
+                    <img :src="require(`@/assets/${recette.image}.jpg`)">
+                    
+                </div>
+
+                <div class="nom_recette">
+                    {{recette.nom}}
+                </div>
+      
+            </div>
         </div>
-    </div>
-
+        </div>
+<div class="btn">
+        <button class="btn_section1">Valider</button>
+        <button class="btn_section1">Modifier</button>
+</div>
+</div>
    
 
-   
-    
     
     <footer>
         <p class="copy">@Copyright by Sophie Boitelle</p>
@@ -40,91 +69,37 @@
     </footer>
 
     
-    </div>
+    
+</div>
    
 </template>
 
 <script>
 export default {
-   props: ["users"],
+    props: ["user","recette"],
   data() {
      
     return {
       email: this.$route.params.email,
-    }
-  }
+      
+    };
+  },
+  components: {},
+  methods: {
+      
+},
+
 }
 </script>
 
 
 <style scoped>
-.icone{
-    position: relative;
-}
-.icone a{
-    background-color: #e7eded;
-    width: 66px;
-    height: 68px;
-    border-radius: 34px;
-    display: flex;
-    align-items: center;
-    transform: translateY(-85px);
-    justify-content: center;
-    cursor: pointer;
-    border-radius: 50%;
-    background: linear-gradient(145deg, #f7fefe, #d0d5d5);
-    box-shadow: 6px 6px 9px #9fa4a4, -6px -6px 9px #ffffff;
-     transition: 0.5s;
-}
-.icone a:hover{
-    transform: translateY(-85px) scale(1.1);
-     transition: 0.5s;
-}
 
-.bi-person{
-    position: absolute;
-    left: 13px;
-    color: black;
-    top: 12px;
-}
-
-.barreDeRecherche{
-    right: 10px;
-    position: absolute;
-    width: 220px;
-}
-.embed-responsive::before {
-    display: block;
-    content: "";
-}
-.embed-responsive{
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.section_video{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-.maisnan{
-    width: 500px !important;
-}
-
-.maisnan  .benjaminLeboss {
-    width: auto !important;
-}
-.sosomanes{
-    width: 443px;
-    height: 430px;
-    overflow: hidden;
-    border-radius: 240px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+.user_identite{
+    z-index: 999;
+    font-size: 43px;
+    text-align: center;
+    
 }
 
 
@@ -139,105 +114,54 @@ export default {
     position: absolute;
         width: 100%;
 }
-
-.header button{
-    position: absolute;
-    border: none;
-    height: 75px;
-    width: 280px;
-    font-size: 24px;
-    outline:none;
-    border-radius: 29px;
-background: #accc87;
-box-shadow:  18px 18px 29px #596a46, 
-             -18px -18px 29px #ffffc8;
-             transition: 0.5s;
-
-}
-.header button:hover{
-transform: scale(1.1);
-     transition: 0.5s;
-}
-.icone{
-    font-size: 40px;
-    margin: 50px;
-   
-    
-}
-.p_first{
-    text-align: center;
-    font-size: 34px;
-    margin: 128px;
-}
-
-.bulle{
-    position: relative;
-    height: 400px;
-    width: 100%;
-}
-
-.img_1{
-    position: absolute;
-    left: 201px;
-    top: 105px;
-}
-
-.img_2{
-    position: absolute;
-    right: 588px;
-}
-
-.img_3{
-    position: absolute;
-    right: 150px;
-    top: 105px;
-}
-
-.p_second{
-    text-align: center;
-    font-size: 34px;
-    margin: 60px;
-}
-
-.img_assiette{
-    width: 100%;
+.section1{
+    height: 80%;
+    width: 80%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 2px solid black;
 }
-
-.btn{
+.recette{
     display: flex;
-    justify-content: center;
-    
+    justify-content: space-around;
 }
-
-.btn_commencer{
-    background-color: #accc87;
-    border: none;
-    height: 75px;
-    width: 280px;
-    font-size: 24px;
-    margin: 150px;
-    outline:none;
-    border-radius: 29px;
-background: #accc87;
-box-shadow:  18px 18px 29px #596a46, 
-             -18px -18px 29px #ffffc8;
-            
-     transition: 0.5s;
+.section1 p{
+    text-align: center;
+    font-size: 30px;
+    padding: 30px;
 }
-
-.btn_commencer:hover{
+.single-publication{
+    width: 200px;
+    height: 290px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 15px;
+        text-align: center;
+}
+.btn{
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.btn_section1{
+    width: 10%;
+    margin: 0 auto;
+    font-size: 24px;   
+    border-radius: 9px;
+    background: #ffffff;
    
-     transform: scale(1.1);
-     transition: 0.5s;
+
 }
 
-.btn_commencer:active{
-    background-color: #accc87;
-   
-}
+
+
 
 footer{
     background-color: black;
@@ -246,6 +170,7 @@ footer{
     height: 100px;
     align-items: center;
     padding: 20px;
+    margin-top: 50px;
 }
 
 .copy{

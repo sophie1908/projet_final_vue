@@ -133,8 +133,8 @@ export default {
             
                       if(res.data){
                               alert("ok");
-                              localStorage.setItem("token",res.data.token)
-                              this.$router.push({name: 'accueilUser', params: {email : this.email}})
+                              localStorage.setItem("token",res.data.users)
+                              this.$router.push({name: 'accueilUser', params: {users : res.data.users}})
                               /*  La méthode Location.reload() recharge la ressource depuis l'URL actuelle */
                               window.location.reload();
                       }
