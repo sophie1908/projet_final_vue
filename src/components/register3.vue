@@ -66,6 +66,7 @@
 
             <div class="materiel">
               <ul>
+                <!-- key id de la ligne -->
                 <li v-for="item in materiels" :key="item.id">
                   <input
                     type="checkbox"

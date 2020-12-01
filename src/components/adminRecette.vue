@@ -18,55 +18,58 @@
 
             <div class="categorie">
                 <fieldset>
-                    <legend>Catégorie :</legend>
+                    <legend>Cat_recette :</legend>
                     <div>
-                        <input type="checkbox" id="ptidej" value="petit_dej">
-                        <label for="ptidej">Petit Déjeuner</label>
+                        <input type="checkbox" id="nouveaute" value="nouveaute">
+                        <label for="nouveaute">Nouveautées</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="dej" name="interest" value="dej">
-                        <label for="dej">Déjeuner</label>
+                        <input type="checkbox" id="healthy" name="interest" value="healthy">
+                        <label for="healthy">Healthy</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="diner" name="interest" value="diner">
-                        <label for="diner">Dîner</label>
-                    </div>
-                </fieldset>
-            </div>
-
-            <div class="niveau">
-                <fieldset>
-                    <legend>Niveau :</legend>
-                    <div>
-                        <input type="checkbox" id="1" name="interest" value="1">
-                        <label for="1">1</label>
+                        <input type="checkbox" id="vegetarien" name="interest" value="vegetarien">
+                        <label for="vegetarien">Végétarien</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="2" name="interest" value="2">
-                        <label for="2">2</label>
+                        <input type="checkbox" id="plat_rapide" name="interest" value="plat_rapide">
+                        <label for="plat_rapide">Plat Rapide</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="3" name="interest" value="3">
-                        <label for="3">3</label>
+                        <input type="checkbox" id="repas-famille" name="interest" value="repas-famille">
+                        <label for="repas-famille">Repas de Famille</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="4" name="interest" value="4">
-                        <label for="4">4</label>
+                        <input type="checkbox" id="dessert" name="interest" value="dessert">
+                        <label for="dessert">Dessert</label>
+                        <div>
+                        <input type="checkbox" id="petit_dej" name="interest" value="petit_dej">
+                        <label for="petit_dej">Petit Déjeuner</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="5" name="interest" value="5">
-                        <label for="5">5</label>
+                        <input type="checkbox" id="apéro" name="interest" value="apéro">
+                        <label for="apéro">Apéro</label>
+                    </div>
                     </div>
                 </fieldset>
             </div>
 
-            <div class="cout">
-                <label for="tentacles">Coût (0-100):</label>
-                <input type="number" id="tentacles" name="tentacles"
-                min="0" max="100">
+            <div class="ingredient">
+              <ul>
+                <!-- key id de la ligne -->
+                <li v-for="item in ingredients" :key="item.id">
+                  <input
+                    type="checkbox"
+                    :id="'myCheckbox1' + item.id"
+                    :value="item.id"
+                    v-model="Ingredients"
+                  />
+                  <label class="label_container" :for="'myCheckbox1' + item.id"
+                    >
+                  {{item.nom}}</label>
+                </li>
+              </ul>
             </div>
-
-            <div class="ingredient"></div>
 
             <div class="materiel">
                 <fieldset>
@@ -145,7 +148,11 @@
 
 <script>
 export default {
-
+data() {
+    return {
+        ingredients: []
+    }
+}
 }
 </script>
 

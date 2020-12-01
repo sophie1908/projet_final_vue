@@ -32,17 +32,19 @@
     <p class="hello">
         Vos recettes de cette semaine</p>
         <div class="recette">
-            <div v-for="recette in recette" :key="recette.id">
+            <div v-for="item in filteredItems " :key="item.id">
+                 
                 
                 <div class="single-publication">
                     
                 <div class="recette image">
-                    <img :src="require(`@/assets/${recette.image}.jpg`)">
+                   
+                     <img :src="require(`@/assets/${item.image}.jpg`)"> 
                     
                 </div>
 
                 <div class="nom_recette">
-                    {{recette.nom}}
+                    {{item.nom}}
                 </div>
       
             </div>
@@ -88,6 +90,11 @@ export default {
   methods: {
       
 },
+computed: {
+   filteredItems: function () {
+     return this.recette.slice(0, this.user.repas)
+     }
+  }
 
 }
 </script>
