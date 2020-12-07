@@ -3,8 +3,11 @@
     
     <div class="header">
    
-<img src="../assets/fond_head1.jpg" alt="fond">
-        <button value="recette">Découvrez nos recettes</button>
+<img class="benjlaviedeoimtbg" src="../assets/fond_head1.jpg" alt="fond">
+<div class="logo">
+    <img class="img_logo" src="../assets/logo.png" alt="logo">
+</div>
+        
     </div>
     
 
@@ -107,6 +110,19 @@ export default {
      transition: 0.5s;
 }
 
+.logo{
+    display: contents;
+    
+}
+
+.img_logo{
+    width: 410px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
 .bi-person{
     position: absolute;
     left: 13px;
@@ -161,29 +177,13 @@ export default {
     align-items: center;
 }
 
-.header img{
+.header .benjlaviedeoimtbg{
     position: absolute;
         width: 100%;
 }
 
-.header button{
-    position: absolute;
-    border: none;
-    height: 75px;
-    width: 280px;
-    font-size: 24px;
-    outline:none;
-    border-radius: 29px;
-background: #accc87;
-box-shadow:  18px 18px 29px #596a46, 
-             -18px -18px 29px #ffffc8;
-             transition: 0.5s;
 
-}
-.header button:hover{
-transform: scale(1.1);
-     transition: 0.5s;
-}
+
 .icone{
     font-size: 40px;
     margin: 50px;

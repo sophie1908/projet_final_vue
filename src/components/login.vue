@@ -38,7 +38,8 @@ export default {
     data() {
         return {
             email_login: "",
-            password_login: ""
+            password_login: "",
+            email: this.$route.params.email,
             
         }
 },
@@ -55,7 +56,7 @@ export default {
                 alert("ok");
                 if(res.data.token){
                     localStorage.setItem("token",res.data.token)
-                    this.$router.push({name: 'accueil'})
+                    this.$router.push({path: '/myaccueilUser/'+this.email_login})
                     window.location.reload();
                 }
                 else{
