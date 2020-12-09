@@ -62,19 +62,6 @@
             <a href="/myregister"><button class="btn_commencer" value="commencer" >Commencer l'aventure</button></a>
         </div>
     
-    <footer>
-        <p class="copy">@Copyright by Sophie Boitelle</p>
-        <div class="reseaux">
-            <img src="../assets/Image instagram.png" alt="fond" class="res">
-            <img src="../assets/Image youtube (1).png" alt="fond" class="res">
-            <img src="../assets/Image snapchat.png" alt="fond" class="res">
-            <img src="../assets/Image facebook.png" alt="fond" class="res">
-
-        </div>
-            
-    </footer>
-
-    
     </div>
    </div>
 </template>
@@ -264,31 +251,5 @@ box-shadow:  18px 18px 29px #596a46,
     background-color: #accc87;
    
 }
-
-footer{
-    background-color: black;
-    display: flex;
-    justify-content: space-between;
-    height: 100px;
-    align-items: center;
-    padding: 20px;
-}
-
-.copy{
-    color: white;
-}
-
-.reseaux{
-    display: flex;
-    justify-content: space-around;
-        width: 250px;
-}
-
-.res{
-    height: 40px;
-}
-
-
-
 
 </style>

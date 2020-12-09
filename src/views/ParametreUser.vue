@@ -1,26 +1,25 @@
 <template>
     <div>
-        <myaccueilUser :recette="recette"  :user="user" />
+        <myparametreUser :materiel="materiel" :user="user" />
         <myfooter/>
     </div>
 </template>
 
 <script>
-import myaccueilUser from '../components/accueilUser'
+import myparametreUser from '../components/parametreUser'
 import myfooter from '../components/myfooter'
-
 
 export default {
     name:"",
     data(){
         return{
             user: "",
-            recette:"",
+            materiel:""
         }
     },
     components:{
 
-        myaccueilUser,
+        myparametreUser,
         myfooter
         
     },
@@ -28,19 +27,18 @@ export default {
     this.axios
       .get("http://localhost:3000/user/rec_user/" + this.$route.params.email)
       .then((res) => {
-        this.user = res.data.user,
+        this.user =  res.data.user,
         
-    this.axios
-        .get("http://localhost:3000/recette/all_recette/")
+        this.axios
+        .get("http://localhost:3000/materiel/rec_materiel/")
         .then((res) =>{
-             console.log(res.data.recette.images);
-            this.recette = res.data.recette;
+             console.log(res.data);
+            this.materiel = res.data.materiel;
     })
-      });
+      })
 }
 }
 </script>
 <style scoped>
 
 </style>
-

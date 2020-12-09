@@ -8,6 +8,8 @@ import Login from "../views/Login.vue";
 import Mdp from "../views/Mdp.vue";
 import Reinitialiser from "../views/Reinitialiser.vue";
 import AdminRecette from "../views/AdminRecette.vue";
+import ParametreUser from "../views/ParametreUser.vue";
+import UpdateUser from "../views/UpdateUser.vue";
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,12 @@ const routes = [{
         path: '/myaccueilUser/:email',
         name: 'accueilUser',
         component: AccueilUser
+    },
+
+    {
+        path: '/myparametreUser/:email',
+        name: 'parametreUser',
+        component: ParametreUser
     },
 
     {
@@ -58,6 +66,11 @@ const routes = [{
         path: '/myadminRecette',
         name: 'adminRecette',
         component: AdminRecette
+    },
+    {
+        path: '/myupdateUser/:email',
+        name: 'updateUser',
+        component: UpdateUser
     },
 
 ]
