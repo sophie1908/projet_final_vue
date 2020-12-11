@@ -14,9 +14,9 @@
             <router-link :to="`/myparametreUser/${user.email}`" @click="activation">
             <li class="li_1">Paramètres <br>foyer</li>
             </router-link>
-            <li class="li_2">Informations<br>personelles</li>
-            <li class="li_3">Mes recettes <br>favorites</li>
-            <li class="li_4">Mes dernières <br>recettes</li>
+            <li class="li_2">Mes recettes <br>favorites</li>
+            <li class="li_3">Mes dernières <br>recettes</li>
+            <li class="li_4">Rechercher <br>une recette</li>
             <router-link :to="`/`">
             <li class="li_5">Se <br>déconnecter</li>
              </router-link>

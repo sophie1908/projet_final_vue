@@ -1,6 +1,6 @@
 <template>
     <div>
-        <myparametreUser :materiel="materiel" :user="user" />
+        <myparametreUser :materiels="materiel" :user="user" />
         <myfooter/>
     </div>
 </template>
