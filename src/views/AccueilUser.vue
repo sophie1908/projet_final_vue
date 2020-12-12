@@ -1,46 +1,42 @@
 <template>
-    <div>
-        <myaccueilUser :recette="recette"  :user="user" />
-        <myfooter/>
-    </div>
+  <div>
+    <myaccueilUser :recette="recette" :user="user" />
+    <myfooter />
+  </div>
 </template>
 
 <script>
-import myaccueilUser from '../components/accueilUser'
-import myfooter from '../components/myfooter'
-
+import myaccueilUser from "../components/accueilUser";
+import myfooter from "../components/myfooter";
 
 export default {
-    name:"",
-    data(){
-        return{
-            user: "",
-            recette:"",
-        }
-    },
-    components:{
-
-        myaccueilUser,
-        myfooter
-        
-    },
-    created: function() {
+  name: "",
+  data() {
+    return {
+      user: "",
+      recette: "",
+    };
+  },
+  components: {
+    myaccueilUser,
+    myfooter,
+  },
+  created: function() {
     this.axios
       .get("http://localhost:3000/user/rec_user/" + this.$route.params.email)
       .then((res) => {
-        this.user = res.data.user,
-        
-    this.axios
-        .get("http://localhost:3000/recette/all_recette/")
-        .then((res) =>{
-             console.log(res.data.recette.images);
-            this.recette = res.data.recette;
-    })
+        (this.user = res.data.user),
+          this.axios
+            .get(
+              "http://localhost:3000/user_recette_semaine/" +
+                this.$route.params.email
+            )
+            .then((res) => {
+              console.log(res.data.recette.images);
+              this.recette = res.data.recette;
+            });
       });
-}
-}
+  },
+};
 </script>
-<style scoped>
-
-</style>
-
+<style scoped></style>

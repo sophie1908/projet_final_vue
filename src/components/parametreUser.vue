@@ -232,7 +232,7 @@ export default {
 /*****************************************  navbar ******************************************************/
 .navbar {
   height: 150px;
-  margin-bottom: 50px;
+  margin: 40px 0px 40px 0px;
 }
 
 .sous_menu {
@@ -253,10 +253,12 @@ export default {
   transition: 0.5s;
   color: black;
   list-style: none;
+  outline: none;
 }
 .menu_li:hover {
   border: black solid 1.5px;
   transition: 0.5s;
+  outline: none;
 }
 
 #li_1 {

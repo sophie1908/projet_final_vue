@@ -10,6 +10,8 @@ import Reinitialiser from "../views/Reinitialiser.vue";
 import AdminRecette from "../views/AdminRecette.vue";
 import ParametreUser from "../views/ParametreUser.vue";
 import UpdateUser from "../views/UpdateUser.vue";
+import Recette_nouveautee from "../views/Recette_nouveautee.vue";
+import All_Recette from "../views/All_Recette.vue";
 
 Vue.use(VueRouter)
 
@@ -71,6 +73,16 @@ const routes = [{
         path: '/myupdateUser/:email',
         name: 'updateUser',
         component: UpdateUser
+    },
+    {
+        path: '/myrecetteNouveautee/:email',
+        name: 'recette_nouveautee',
+        component: Recette_nouveautee
+    },
+    {
+        path: '/myallrecette/:email',
+        name: 'all_recette',
+        component: All_Recette
     },
 
 ]

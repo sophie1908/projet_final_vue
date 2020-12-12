@@ -2,35 +2,23 @@
   <div>
     <div class="header">
       <img src="../assets/fond_head1.jpg" alt="fond" />
-
-      <p class="user_identite">
-        Bonjour <br />
-        {{ user.prenom }}
-      </p>
+      <div class="nouveaute">Nouveautées</div>
     </div>
     <div class="navbar">
       <ul class="sous_menu">
-        <router-link :to="`/myparametreUser/${user.email}`">
-          <li class="li_1">Paramètres <br />foyer</li>
+        <router-link :to="`/myaccueilUser/${user.email}`">
+          <li class="li_1">Mon compte</li>
         </router-link>
-
-        <li class="li_2">Mes recettes <br />favorites</li>
-
-        <li class="li_3">Mes dernières <br />recettes</li>
+        <li class="li_2">Recettes <br />Rapide</li>
         <router-link :to="`/myallrecette/${user.email}`">
-          <li class="li_4">Rechercher <br />une recette</li>
+          <li class="li_3">Toutes les <br />recettes</li>
         </router-link>
-
-        <router-link :to="`/`">
-          <li class="li_5">Se <br />déconnecter</li>
-        </router-link>
+        <li class="li_4">Recettes <br />végétariennes</li>
+        <li class="li_5">Recettes<br />healthy</li>
       </ul>
     </div>
 
     <div class="section1">
-      <p class="hello">
-        Vos recettes de cette semaine
-      </p>
       <div class="recette">
         <div v-for="item in filteredItems" :key="item.id">
           <div class="single-publication">
@@ -45,8 +33,8 @@
               {{ item.nom }}
             </div>
 
-            <div class="btn_change_recipe">
-              <button class="btn_change">Changer de recette</button>
+            <div class="btn_ajouter_recipe">
+              <button class="btn_ajouter">Ajouter</button>
             </div>
           </div>
         </div>
@@ -70,14 +58,17 @@ export default {
   methods: {},
   computed: {
     filteredItems: function() {
-      return this.recette.slice(0, this.user.repas);
+      if (!this.recette) return [];
+      return this.recette.filter((recettes) => {
+        return recettes.cat_recetteId === 1;
+      });
     },
   },
 };
 </script>
 
 <style scoped>
-.user_identite {
+.nouveaute {
   z-index: 999;
   font-size: 43px;
   text-align: center;
@@ -94,6 +85,8 @@ export default {
   position: absolute;
   width: 100%;
 }
+
+/************************************navbar******************************/
 .navbar {
   height: 150px;
   margin: 40px 0px 40px 0px;
@@ -123,6 +116,7 @@ li:hover {
 
 .li_1 {
   background-color: #e098a3;
+  padding: 30px;
 }
 
 .li_2 {
@@ -140,7 +134,7 @@ li:hover {
 .li_5 {
   background-color: #fe9c9d;
 }
-
+/**************************** recettes ************************************/
 .section1 {
   height: 80%;
   width: 80%;
@@ -149,7 +143,6 @@ li:hover {
   flex-direction: column;
   background-color: #ffffff;
   border-radius: 10px;
-  border: 2px solid black;
 }
 .recette {
   display: flex;
@@ -161,22 +154,20 @@ li:hover {
 .img_recette {
   height: 170px;
 }
-.section1 p {
-  text-align: center;
-  font-size: 30px;
-  padding: 30px;
-}
+
 .single-publication {
   width: 200px;
   height: 290px;
-  border: 2px solid black;
+  border: 2px solid #b8b5b6;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  font-size: 15px;
+  font-size: 16px;
   text-align: center;
   margin-bottom: 30px;
+  box-shadow: 3px 1px 11px #9c9a9b, -1px -1px 3px #d4d0d1;
+  font-weight: bold;
 }
 .btn {
   height: 120px;
@@ -191,8 +182,17 @@ li:hover {
   border-radius: 9px;
   background: #ffffff;
 }
-.btn_change {
+.btn_ajouter {
+  border: none;
+  color: white;
   border-radius: 10px;
   padding: 5px;
+  background-color: brown;
+  font-size: 13px;
+  box-shadow: 1px 1px 2px #6f2c2c, -1px -1px 2px #973c3c;
+}
+.btn_ajouter:hover {
+  font-size: 13.5px;
+  transition: 0.2s;
 }
 </style>
