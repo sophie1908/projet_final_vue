@@ -32,8 +32,9 @@
         Vos recettes de cette semaine
       </p>
       <div class="recette">
-        <div v-for="item in filteredItems" :key="item.id">
+        <div class="recette-item" v-for="item in filteredItems" :key="item.id">
           <div class="single-publication">
+            <i class="far fa-heart"></i>
             <div class="recetteImage">
               <img
                 :src="require(`@/assets/${item.image}.png`)"
@@ -70,6 +71,7 @@ export default {
   methods: {},
   computed: {
     filteredItems: function() {
+      console.log(this.recette.slice(0, this.user.repas));
       return this.recette.slice(0, this.user.repas);
     },
   },
@@ -156,6 +158,10 @@ li:hover {
   justify-content: space-around;
   flex-wrap: wrap;
   margin: 60px 0px 60px 0px;
+}
+.fa-heart {
+  width: 30px;
+  transform: translate(156px, 10px);
 }
 
 .img_recette {

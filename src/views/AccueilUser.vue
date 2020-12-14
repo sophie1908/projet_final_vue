@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       user: "",
-      recette: "",
+      recette: [],
     };
   },
   components: {
@@ -28,12 +28,13 @@ export default {
         (this.user = res.data.user),
           this.axios
             .get(
-              "http://localhost:3000/user_recette_semaine/" +
+              "http://localhost:3000/user/user_recette_semaine/" +
                 this.$route.params.email
             )
             .then((res) => {
-              console.log(res.data.recette.images);
-              this.recette = res.data.recette;
+              res.data.materiels.forEach((materiel) => {
+                this.recette = this.recette.concat(materiel.recettes);
+              });
             });
       });
   },
