@@ -6,11 +6,11 @@
     </div>
     <div class="navbar">
       <ul class="sous_menu">
-        <router-link :to="`/myaccueilUser/${user.email}`">
+        <router-link :to="`/myaccueilUser`">
           <li class="li_1">Mon compte</li>
         </router-link>
         <li class="li_2">Recettes <br />Rapide</li>
-        <router-link :to="`/myrecetteNouveautee/${user.email}`">
+        <router-link :to="`/myrecetteNouveautee`">
           <li class="li_3">Nouveautées</li>
         </router-link>
         <li class="li_4">Recettes <br />végétariennes</li>
@@ -51,7 +51,7 @@ export default {
   props: ["user", "recette"],
   data() {
     return {
-      email: this.$route.params.email,
+      email: localStorage.getItem("email"),
     };
   },
   components: {},

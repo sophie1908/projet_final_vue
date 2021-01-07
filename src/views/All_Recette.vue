@@ -26,7 +26,8 @@ export default {
       (this.recette = res.data.recette),
         this.axios
           .get(
-            "http://localhost:3000/user/rec_user/" + this.$route.params.email
+            "http://localhost:3000/user/rec_user/" +
+              localStorage.getItem("email")
           )
           .then((res) => {
             this.user = res.data.user;

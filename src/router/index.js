@@ -12,6 +12,8 @@ import ParametreUser from "../views/ParametreUser.vue";
 import UpdateUser from "../views/UpdateUser.vue";
 import Recette_nouveautee from "../views/Recette_nouveautee.vue";
 import All_Recette from "../views/All_Recette.vue";
+import Fiche_recette from "../views/Fiche_recette.vue";
+
 
 Vue.use(VueRouter)
 
@@ -22,13 +24,13 @@ const routes = [{
     },
 
     {
-        path: '/myaccueilUser/:email',
+        path: '/myaccueilUser',
         name: 'accueilUser',
         component: AccueilUser
     },
 
     {
-        path: '/myparametreUser/:email',
+        path: '/myparametreUser',
         name: 'parametreUser',
         component: ParametreUser
     },
@@ -83,6 +85,11 @@ const routes = [{
         path: '/myallrecette/:email',
         name: 'all_recette',
         component: All_Recette
+    },
+    {
+        path: '/myficheRecette/:id',
+        name: 'fiche_recette',
+        component: Fiche_recette
     },
 
 ]

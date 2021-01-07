@@ -7,7 +7,7 @@
 
     <div class="navbar">
       <ul class="sous_menu">
-        <router-link :to="`/myaccueilUser/${user.email}`">
+        <router-link :to="`/myaccueilUser`">
           <li class="menu_li" id="li_1">Mes recettes <br />de la semaine</li>
         </router-link>
 
@@ -132,7 +132,8 @@
                     type="checkbox"
                     :id="'myCheckbox1' + item.id"
                     :value="item.id"
-                    v-model="Materiels"
+                    v-model="checked"
+                    v-bind:checked="checked"
                   />
                   <label class="label_container" :for="'myCheckbox1' + item.id"
                     ><img :src="require(`@/assets/${item.image}.png`)" />
@@ -154,12 +155,14 @@ export default {
   data() {
     return {
       Materiels: [],
-      email: this.$route.params.email,
+      email: localStorage.getItem("email"),
       selected_repas: "",
       personne: 0,
       open_personne: false,
       open_repas: false,
       repas: 0,
+      userMateriels: [],
+      checked: true,
     };
   },
   components: {},
@@ -204,9 +207,7 @@ export default {
   },
   computed: {},
   created() {
-    this.personne = this.user.personne;
-    this.email = this.$router.params.email;
-    this.repas = this.user.repas;
+    document.getElementById("myCheckbox11").prop("checked") == true ? "1" : "0";
   },
 };
 </script>

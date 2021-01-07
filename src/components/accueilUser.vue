@@ -8,33 +8,15 @@
         {{ user.prenom }}
       </p>
     </div>
-    <div class="navbar">
-      <ul class="sous_menu">
-        <router-link :to="`/myparametreUser/${user.email}`">
-          <li class="li_1">Paramètres <br />foyer</li>
-        </router-link>
-
-        <li class="li_2">Mes recettes <br />favorites</li>
-
-        <li class="li_3">Mes dernières <br />recettes</li>
-        <router-link :to="`/myallrecette/${user.email}`">
-          <li class="li_4">Rechercher <br />une recette</li>
-        </router-link>
-
-        <router-link :to="`/`">
-          <li class="li_5">Se <br />déconnecter</li>
-        </router-link>
-      </ul>
-    </div>
 
     <div class="section1">
       <p class="hello">
         Vos recettes de cette semaine
       </p>
       <div class="recette">
-        <div class="recette-item" v-for="item in filteredItems" :key="item.id">
+        <div class="recette-item" v-for="item in recette" :key="item.id">
           <div class="single-publication">
-            <i class="far fa-heart"></i>
+            <i class="far fa-heart" v-on: click="togglefav"></i>
             <div class="recetteImage">
               <img
                 :src="require(`@/assets/${item.image}.png`)"
@@ -48,6 +30,9 @@
 
             <div class="btn_change_recipe">
               <button class="btn_change">Changer de recette</button>
+              <button class="btn_supprimer" @click="delete_items(item)">
+                <i class="fas fa-trash-alt"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -64,11 +49,19 @@ export default {
   props: ["user", "recette"],
   data() {
     return {
-      email: this.$route.params.email,
+      email: localStorage.getItem("email"),
     };
   },
   components: {},
-  methods: {},
+  methods: {
+    deconnection() {
+      localStorage.removeItem("email");
+      localStorage.removeItem("token");
+    },
+    delete_items: function(index) {
+      this.recette.splice(index);
+    },
+  },
   computed: {
     filteredItems: function() {
       console.log(this.recette.slice(0, this.user.repas));
@@ -96,63 +89,20 @@ export default {
   position: absolute;
   width: 100%;
 }
-.navbar {
-  height: 150px;
-  margin: 40px 0px 40px 0px;
-}
-
-.sous_menu {
-  list-style: none;
-  display: flex;
-  border: none;
-  justify-content: space-between;
-  width: 90%;
-  margin: 0 auto;
-}
-li {
-  margin: 15px;
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
-  height: 80px;
-  width: 155px;
-  transition: 0.5s;
-}
-li:hover {
-  border: black solid 1.5px;
-  transition: 0.5s;
-}
-
-.li_1 {
-  background-color: #e098a3;
-}
-
-.li_2 {
-  background-color: #ffbf75;
-}
-
-.li_3 {
-  background-color: #bfb09b;
-}
-
-.li_4 {
-  background-color: #afce88;
-}
-
-.li_5 {
-  background-color: #fe9c9d;
-}
 
 .section1 {
   height: 80%;
   width: 80%;
   margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   border-radius: 10px;
   border: 2px solid black;
 }
+
 .recette {
   display: flex;
   justify-content: space-around;
@@ -200,5 +150,16 @@ li:hover {
 .btn_change {
   border-radius: 10px;
   padding: 5px;
+}
+.btn_supprimer {
+  border: none;
+  background-color: white;
+  transform: translateX(10px);
+  outline: none;
+}
+
+.fa-trash-alt {
+  transform: translate(-2px, 2px);
+  border: none;
 }
 </style>

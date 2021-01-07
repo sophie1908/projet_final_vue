@@ -61,7 +61,8 @@ export default {
           alert("ok");
           if (res.data.token) {
             localStorage.setItem("token", res.data.token);
-            this.$router.push({ path: "/myaccueilUser/" + this.email_login });
+            localStorage.setItem("email", this.email_login);
+            this.$router.push({ path: "/myaccueilUser" });
             window.location.reload();
           } else {
             this.$router.push({

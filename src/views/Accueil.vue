@@ -1,11 +1,13 @@
 <template>
   <div>
+    <navbar />
     <myaccueil :recette="recette" />
     <myfooter />
   </div>
 </template>
 
 <script>
+import navbar from "../components/navbar";
 import myaccueil from "../components/accueil";
 import myfooter from "../components/myfooter";
 
@@ -13,10 +15,11 @@ export default {
   name: "",
   data() {
     return {
-      recette: "",
+      recette: {},
     };
   },
   components: {
+    navbar,
     myaccueil,
     myfooter,
   },
