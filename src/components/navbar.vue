@@ -4,12 +4,20 @@
       <div class="logo">
         <img class="img_logo" src="../assets/logo_white.png" alt="logo" />
       </div>
-      <ul>
+      <ul class="menu_deroulant">
         <li>
           <a class="link-page">Nous découvrir</a>
         </li>
         <li>
-          <a class="link-page" href="/mylogin"><i class="fas fa-user"></i></a>
+          <a class="link-page"><i class="fas fa-user"></i></a>
+          <ul class="menu_deroulant_user">
+            <li>
+              <a href="/myregister">S'inscrire</a>
+            </li>
+            <li>
+              <a href="/mylogin">S'identifier</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>
@@ -32,7 +40,7 @@ nav ul {
   list-style: none;
   justify-content: space-around;
   margin: 10px;
-  width: 300px;
+  width: 420px;
   align-items: center;
 }
 
@@ -60,5 +68,40 @@ nav ul {
   left: 13px;
   color: black;
   top: 12px;
+}
+.menu_deroulant_user {
+  position: absolute;
+  left: -999em;
+  text-align: left;
+  z-index: 1000;
+  width: 117px;
+  text-align: center;
+  top: 55px;
+  background: #d93d3d;
+  display: inherit;
+  border-radius: 0px 0px 5px 5px;
+  transform: translateX(635px);
+}
+.menu_deroulant li {
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+.menu_deroulant li:hover ul {
+  left: auto;
+  left: 670px;
+}
+.menu_deroulant ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu_deroulant a {
+  background-color: transparent;
+  color: white !important;
+}
+.menu_deroulant_user li:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 </style>

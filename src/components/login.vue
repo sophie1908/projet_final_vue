@@ -58,13 +58,13 @@ export default {
         })
         .then((res) => {
           console.log(res);
-          alert("ok");
           if (res.data.token) {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("email", this.email_login);
             this.$router.push({ path: "/myaccueilUser" });
             window.location.reload();
           } else {
+            alert("Mot de passe ou e-mail incorrect");
             this.$router.push({
               name: "register",
               params: { msg: "non connecté" },
@@ -106,7 +106,7 @@ export default {
   position: absolute;
   left: 39px;
   top: 34px;
-  color: #a9a6a3;
+  color: #d93d3d;
 }
 h1 {
   font-size: 45px;
@@ -146,29 +146,21 @@ input {
 }
 
 .btn-valider {
-  border: 0;
+  border: none;
   height: 43px;
   width: 135px;
   font-size: 22px;
+  font-weight: bolder;
   text-align: center;
   color: #fff;
-  text-shadow: 1px 1px 1px #000;
-  border-radius: 22px;
-  background-color: #ff9d9e;
-  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
-  position: relative;
-  bottom: -32px;
-  transition: 0.3s;
+  border-radius: 9px;
+  background-color: #d93d3d;
+  outline: none;
+  transition: 0.4s;
 }
 
 .btn-valider:hover {
   font-size: 23px;
-  transition: 0.3s;
-}
-
-.btn-valider:active {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
-    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+  transition: 0.4s;
 }
 </style>

@@ -82,7 +82,7 @@ const routes = [{
         component: Recette_nouveautee
     },
     {
-        path: '/myallrecette/:email',
+        path: '/myallrecette',
         name: 'all_recette',
         component: All_Recette
     },

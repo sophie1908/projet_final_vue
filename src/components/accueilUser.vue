@@ -16,29 +16,40 @@
       <div class="recette">
         <div class="recette-item" v-for="item in recette" :key="item.id">
           <div class="single-publication">
-            <i class="far fa-heart" v-on: click="togglefav"></i>
             <div class="recetteImage">
               <img
                 :src="require(`@/assets/${item.image}.png`)"
                 class="img_recette"
               />
             </div>
+            <div class="descriptif">
+              <div class="nom_recette">
+                {{ item.nom }}
+              </div>
+              <div class="cout_recette">
+                <div class="flex">
+                  {{ item.cout_pers }}
+                  <p>€/pers</p>
+                </div>
+              </div>
+              <div class="temps_recette">
+                {{ item.temps }}
+              </div>
 
-            <div class="nom_recette">
-              {{ item.nom }}
-            </div>
-
-            <div class="btn_change_recipe">
-              <button class="btn_change">Changer de recette</button>
-              <button class="btn_supprimer" @click="delete_items(item)">
-                <i class="fas fa-trash-alt"></i>
-              </button>
+              <div class="btn_change_recipe">
+                <button class="btn_change" @click="delete_items(item)">
+                  <a href="/myallrecette">Changer de recette</a>
+                </button>
+                <button class="btn_supprimer" @click="delete_items(item)">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="btn">
-        <button class="btn_section1">Valider</button>
+        <button class="btn_section1"><i class="fas fa-check"></i></button>
       </div>
     </div>
   </div>
@@ -100,7 +111,7 @@ export default {
   flex-direction: column;
   background-color: #ffffff;
   border-radius: 10px;
-  border: 2px solid black;
+  box-shadow: 0px 1px 10px 3px rgba(0, 0, 0, 0.16);
 }
 
 .recette {
@@ -109,57 +120,109 @@ export default {
   flex-wrap: wrap;
   margin: 60px 0px 60px 0px;
 }
-.fa-heart {
-  width: 30px;
-  transform: translate(156px, 10px);
-}
 
 .img_recette {
   height: 170px;
 }
-.section1 p {
+.hello {
   text-align: center;
   font-size: 30px;
   padding: 30px;
 }
 .single-publication {
-  width: 200px;
-  height: 290px;
-  border: 2px solid black;
+  width: 420px;
+  height: 201px;
+  border: 6px solid #d93d3d;
   border-radius: 10px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  font-size: 15px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
   text-align: center;
-  margin-bottom: 30px;
+  background: #d93d3d;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.recetteImage {
+  background: white;
+  border-radius: 10px;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nom_recette {
+  font-size: 19px;
+  transform: translateY(-11px);
+  font-weight: bolder;
+}
+.descriptif {
+  width: 220px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: white;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+}
+.btn_change_recipe {
+  transform: translate(9px, 21px);
+  background: white;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  width: 200px;
 }
 .btn {
   height: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  position: relative;
 }
 .btn_section1 {
-  width: 10%;
-  margin: 0 auto;
-  font-size: 24px;
-  border-radius: 9px;
-  background: #ffffff;
+  height: 60px;
+  width: 60px;
+  border-radius: 50px;
+  border: none;
+  background-color: #d93d3d;
+  transition: 0.3s;
+  position: absolute;
+  right: 30px;
+  top: 38px;
+}
+.btn_section1:hover {
+  height: 65px;
+  width: 65px;
+  transition: 0.5s;
+}
+.fa-check {
+  color: white;
+  font-size: 31px;
 }
 .btn_change {
-  border-radius: 10px;
   padding: 5px;
+  background: white;
+  border: none;
+  border-right: solid;
+  width: 150px;
+  font-size: 14px;
+  outline: none;
 }
 .btn_supprimer {
   border: none;
   background-color: white;
   transform: translateX(10px);
   outline: none;
+  height: 25px;
+  width: 25px;
+  border-radius: 25px;
 }
 
 .fa-trash-alt {
-  transform: translate(-2px, 2px);
+  transform: translate(0px, 1px);
   border: none;
 }
 </style>

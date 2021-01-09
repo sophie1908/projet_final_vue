@@ -4,19 +4,6 @@
       <img src="../assets/fond_head1.jpg" alt="fond" />
       <div class="nouveaute">Recettes</div>
     </div>
-    <div class="navbar">
-      <ul class="sous_menu">
-        <router-link :to="`/myaccueilUser`">
-          <li class="li_1">Mon compte</li>
-        </router-link>
-        <li class="li_2">Recettes <br />Rapide</li>
-        <router-link :to="`/myrecetteNouveautee`">
-          <li class="li_3">Nouveautées</li>
-        </router-link>
-        <li class="li_4">Recettes <br />végétariennes</li>
-        <li class="li_5">Recettes<br />healthy</li>
-      </ul>
-    </div>
 
     <div class="section1">
       <div class="recette">
@@ -34,13 +21,10 @@
             </div>
 
             <div class="btn_ajouter_recipe">
-              <button class="btn_ajouter">Ajouter</button>
+              <button class="btn_ajouter"><i class="fas fa-plus"></i></button>
             </div>
           </div>
         </div>
-      </div>
-      <div class="btn">
-        <button class="btn_section1">Valider</button>
       </div>
     </div>
   </div>
@@ -79,55 +63,6 @@ export default {
   width: 100%;
 }
 
-/************************************navbar******************************/
-.navbar {
-  height: 150px;
-  margin: 40px 0px 40px 0px;
-}
-
-.sous_menu {
-  list-style: none;
-  display: flex;
-  border: none;
-  justify-content: space-between;
-  width: 90%;
-  margin: 0 auto;
-}
-li {
-  margin: 15px;
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
-  height: 80px;
-  width: 155px;
-  transition: 0.5s;
-}
-li:hover {
-  border: black solid 1.5px;
-  transition: 0.5s;
-}
-
-.li_1 {
-  background-color: #e098a3;
-  padding: 27px;
-}
-
-.li_2 {
-  background-color: #ffbf75;
-}
-
-.li_3 {
-  background-color: #bfb09b;
-  padding: 27px;
-}
-
-.li_4 {
-  background-color: #afce88;
-}
-
-.li_5 {
-  background-color: #fe9c9d;
-}
 /**************************** recettes ************************************/
 .section1 {
   height: 80%;
@@ -152,7 +87,6 @@ li:hover {
 .single-publication {
   width: 200px;
   height: 290px;
-  border: 2px solid #b8b5b6;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -160,7 +94,7 @@ li:hover {
   font-size: 16px;
   text-align: center;
   margin-bottom: 30px;
-  box-shadow: 3px 1px 11px #9c9a9b, -1px -1px 3px #d4d0d1;
+  box-shadow: 0px 1px 20px 5px rgba(0, 0, 0, 0.16);
   font-weight: bold;
 }
 .btn {
@@ -179,10 +113,11 @@ li:hover {
 .btn_ajouter {
   border: none;
   color: white;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 5px;
-  background-color: brown;
+  background-color: #d93d3d;
   font-size: 13px;
-  box-shadow: 1px 1px 2px #6f2c2c, -1px -1px 2px #973c3c;
+  height: 30px;
+  width: 30px;
 }
 </style>

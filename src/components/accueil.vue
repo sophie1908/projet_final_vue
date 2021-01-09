@@ -64,7 +64,7 @@
       <div class="btn">
         <a href="/myregister"
           ><button class="btn_commencer" value="commencer">
-            S'inscrire
+            Commencer l'aventure
           </button></a
         >
       </div>
@@ -109,26 +109,16 @@ export default {
   flex-wrap: wrap;
 }
 .single-publication {
-  /* width: 200px;
-  height: 290px;
-  border: 2px solid #b8b5b6;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  font-size: 16px;
-  text-align: center;
-  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.16); */
   width: 500px;
   height: 230px;
-  border: 6px solid #cf4242;
+  border: 6px solid #d93d3d;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 16px;
   text-align: center;
-  background: #cf4242;
+  background: #d93d3d;
   transition: 0.5s;
   cursor: pointer;
 }
@@ -242,12 +232,14 @@ export default {
   background-color: #f5f5f5;
   border: none;
   height: 75px;
-  width: 280px;
-  font-size: 24px;
+  width: 512px;
+  font-size: 28px;
   margin: 80px;
   outline: none;
   border-radius: 29px;
-  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 0px 14px 2px rgba(0, 0, 0, 0.16);
+  transition: 0.5s;
+  text-transform: uppercase;
 
   transition: 0.5s;
 }

@@ -2,7 +2,7 @@
   <div>
     <div class="header">
       <img src="../assets/fond_head1.jpg" alt="fond" />
-      <div class="parametre">Vos paramètres</div>
+      <div class="parametre">Mon compte</div>
     </div>
 
     <div class="navbar">

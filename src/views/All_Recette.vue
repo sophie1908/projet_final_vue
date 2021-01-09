@@ -1,11 +1,13 @@
 <template>
   <div>
+    <navbar_user />
     <myallrecette :recette="recette" :user="user" />
     <myfooter />
   </div>
 </template>
 
 <script>
+import navbar_user from "../components/navbar_user";
 import myallrecette from "../components/all_recette";
 import myfooter from "../components/myfooter";
 
@@ -18,6 +20,7 @@ export default {
     };
   },
   components: {
+    navbar_user,
     myallrecette,
     myfooter,
   },
