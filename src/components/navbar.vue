@@ -6,7 +6,7 @@
       </div>
       <ul class="menu_deroulant">
         <li>
-          <a class="link-page">Nous découvrir</a>
+          <a href="/mydecouvrir" class="link-page">Nous découvrir</a>
         </li>
         <li>
           <a class="link-page"><i class="fas fa-user"></i></a>

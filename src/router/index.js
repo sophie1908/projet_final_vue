@@ -13,6 +13,7 @@ import UpdateUser from "../views/UpdateUser.vue";
 import Recette_nouveautee from "../views/Recette_nouveautee.vue";
 import All_Recette from "../views/All_Recette.vue";
 import Fiche_recette from "../views/Fiche_recette.vue";
+import Nousdecouvrir from "../views/Nousdecouvrir.vue";
 
 
 Vue.use(VueRouter)
@@ -90,6 +91,11 @@ const routes = [{
         path: '/myficheRecette/:id',
         name: 'fiche_recette',
         component: Fiche_recette
+    },
+    {
+        path: '/mydecouvrir',
+        name: 'nousdecouvrir',
+        component: Nousdecouvrir
     },
 
 ]

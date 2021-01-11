@@ -64,7 +64,6 @@ export default {
             this.$router.push({ path: "/myaccueilUser" });
             window.location.reload();
           } else {
-            alert("Mot de passe ou e-mail incorrect");
             this.$router.push({
               name: "register",
               params: { msg: "non connecté" },
@@ -73,6 +72,7 @@ export default {
         })
         .catch((err) => {
           console.log(err);
+          alert("Mot de passe ou e-mail incorrect");
         });
     },
   },

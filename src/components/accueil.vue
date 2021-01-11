@@ -214,7 +214,7 @@ export default {
 .p_first {
   text-align: center;
   font-size: 34px;
-  margin: 400px 100px 150px 100px;
+  margin: 180px 100px 150px 100px;
 }
 
 .p_second {
