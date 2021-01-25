@@ -12,24 +12,21 @@
               <a href="/myallrecette">Toutes les recettes</a>
             </li>
             <li>
-              <a href="/all_recette">Express</a>
+              <a href="/myexpress/2">Express</a>
             </li>
             <li>
-              <a href="/all_recette">Light</a>
+              <a href="/mylight/1">Light</a>
             </li>
             <li>
-              <a href="/all_recette">Végétariennes</a>
+              <a href="/myvege/3">Végétariennes</a>
             </li>
             <li>
-              <a href="/all_recette">Familiales</a>
+              <a href="/myfamilial/4">Familiales</a>
             </li>
           </ul>
         </li>
         <li>
           <a class="link-page">Meal Prep</a>
-        </li>
-        <li>
-          <a class="link-page">A propos</a>
         </li>
 
         <li>
@@ -67,7 +64,7 @@ nav ul {
   list-style: none;
   justify-content: space-around;
   margin: 10px;
-  width: 821px;
+  width: 640px;
   align-items: center;
 }
 
@@ -107,7 +104,7 @@ nav ul {
   background: #d93d3d;
   display: inherit;
   border-radius: 0px 0px 5px 5px;
-  transform: translateX(-5px);
+  transform: translateX(190px);
 }
 .menu_deroulant_user {
   position: absolute;
@@ -139,6 +136,7 @@ nav ul {
 .menu_deroulant a {
   background-color: transparent;
   color: white !important;
+  font-weight: 600;
 }
 .menu_deroulant_user li:hover {
   text-decoration: underline;

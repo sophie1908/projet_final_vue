@@ -2,12 +2,12 @@
   <div>
     <div class="header">
       <img src="../assets/fond_head1.jpg" alt="fond" />
-      <div class="nouveaute">Recettes</div>
+      <div class="nouveaute">Recettes Végétariennes</div>
     </div>
 
     <div class="section1">
       <div class="recette">
-        <div v-for="item in recette" :key="item.id">
+        <div v-for="item in cat_recette.recettes" :key="item.id">
           <div class="single-publication">
             <div class="recetteImage">
               <img
@@ -21,9 +21,7 @@
             </div>
 
             <div class="btn_ajouter_recipe">
-              <button class="btn_ajouter" @click="add_recipe(item)">
-                <i class="fas fa-plus"></i>
-              </button>
+              <button class="btn_ajouter"><i class="fas fa-plus"></i></button>
             </div>
           </div>
         </div>
@@ -34,18 +32,14 @@
 
 <script>
 export default {
-  props: ["user", "recette"],
+  props: ["user", "cat_recette"],
   data() {
     return {
       email: localStorage.getItem("email"),
     };
   },
   components: {},
-  methods: {
-    add_recipe: function(index) {
-      this.recette.push(index);
-    },
-  },
+  methods: {},
   computed: {},
 };
 </script>

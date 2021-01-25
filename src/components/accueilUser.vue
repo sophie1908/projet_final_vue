@@ -15,6 +15,7 @@
       </p>
       <div class="recette">
         <div class="recette-item" v-for="item in recette" :key="item.id">
+          <!-- <a @click="fiche_recette(item.id)"> -->
           <div class="single-publication">
             <div class="recetteImage">
               <img
@@ -35,7 +36,6 @@
               <div class="temps_recette">
                 {{ item.temps }}
               </div>
-
               <div class="btn_change_recipe">
                 <button class="btn_change" @click="delete_items(item)">
                   <a href="/myallrecette">Changer de recette</a>
@@ -61,6 +61,7 @@ export default {
   data() {
     return {
       email: localStorage.getItem("email"),
+      id: this.$route.params.id,
     };
   },
   components: {},
@@ -71,6 +72,9 @@ export default {
     },
     delete_items: function(index) {
       this.recette.splice(index);
+    },
+    fiche_recette: function(id) {
+      this.$router.push({ path: `/myficheRecette/${id}` });
     },
   },
   computed: {
@@ -123,6 +127,7 @@ export default {
 
 .img_recette {
   height: 170px;
+  width: 200px;
 }
 .hello {
   text-align: center;
@@ -142,6 +147,7 @@ export default {
   background: #d93d3d;
   transition: 0.5s;
   cursor: pointer;
+  margin: 20px;
 }
 .recetteImage {
   background: white;

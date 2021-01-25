@@ -6,6 +6,9 @@
       </div>
       <ul class="menu_deroulant">
         <li>
+          <a href="/" class="link-page"><i class="fas fa-home"></i></a>
+        </li>
+        <li>
           <a href="/mydecouvrir" class="link-page">Nous découvrir</a>
         </li>
         <li>
@@ -99,6 +102,7 @@ nav ul {
 .menu_deroulant a {
   background-color: transparent;
   color: white !important;
+  font-weight: 600;
 }
 .menu_deroulant_user li:hover {
   text-decoration: underline;

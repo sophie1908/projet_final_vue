@@ -12,6 +12,10 @@ import ParametreUser from "../views/ParametreUser.vue";
 import UpdateUser from "../views/UpdateUser.vue";
 import Recette_nouveautee from "../views/Recette_nouveautee.vue";
 import All_Recette from "../views/All_Recette.vue";
+import Light from "../views/Light.vue";
+import Express from "../views/Express.vue";
+import Vege from "../views/Vege.vue";
+import Familial from "../views/Familial.vue";
 import Fiche_recette from "../views/Fiche_recette.vue";
 import Nousdecouvrir from "../views/Nousdecouvrir.vue";
 
@@ -86,6 +90,26 @@ const routes = [{
         path: '/myallrecette',
         name: 'all_recette',
         component: All_Recette
+    },
+    {
+        path: '/mylight/:id',
+        name: 'light',
+        component: Light
+    },
+    {
+        path: '/myexpress/:id',
+        name: 'express',
+        component: Express
+    },
+    {
+        path: '/myvege/:id',
+        name: 'vege',
+        component: Vege
+    },
+    {
+        path: '/myfamilial/:id',
+        name: 'familial',
+        component: Familial
     },
     {
         path: '/myficheRecette/:id',
